@@ -11,7 +11,7 @@
 @mixin flex-column {
   display: flex;
   flex-direction: column;
-  gap: px_to_rem(40px);
+  gap: px_to_rem(4px_to_rem(0px));
 }
 
 @mixin slider-thumb($bg-color) {
@@ -30,5 +30,19 @@
   &:fullscreen,
   &:-webkit-full-screen {
     @content;
+  }
+}
+
+@mixin media-query($breakpoint) {
+  @if $breakpoint =='tablet' {
+    @media (max-width: $breakpoint-tablet) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint =='mobile' {
+    @media (max-width: $breakpoint-mobile) {
+      @content;
+    }
   }
 }

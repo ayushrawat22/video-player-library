@@ -1,4 +1,10 @@
-function initVideoPlayer(config) {
+import playIconUrl from '../assets/icons/play-svgrepo-com.svg';
+import pauseIconUrl from '../assets/icons/pause-svgrepo-com.svg';
+import muteIconUrl from '../assets/icons/mute-volume-svgrepo-com.svg';
+import unmuteIconUrl from '../assets/icons/unmute-svgrepo-com.svg';
+import fullscreenIconUrl from '../assets/icons/fullscreen-svgrepo-com.svg';
+
+export default function initVideoPlayer(config) {
     let video;
     if (typeof config.videoElement === "string") {
         video = document.querySelector(config.videoElement);
@@ -31,12 +37,12 @@ function initVideoPlayer(config) {
     }
 
     const icons = {
-        play: `<img class="video__player--icon" src="./assets/icons/play-svgrepo-com.svg" alt="Play" />`,
-        pause: `<img class="video__player--icon" src="./assets/icons/pause-svgrepo-com.svg" alt="Pause" />`,
-        mute: `<img class="video__player--icon" src="./assets/icons/mute-volume-svgrepo-com.svg" alt="Mute" />`,
-        unmute: `<img class="video__player--icon" src="./assets/icons/unmute-svgrepo-com.svg" alt="Unmute" />`,
-        fullscreen: `<img class="video__player--icon" src="./assets/icons/fullscreen-svgrepo-com.svg" alt="Fullscreen" />`,
-        exitFullscreen: `<img class="video__player--icon video__player--icon-exit" src="./assets/icons/fullscreen-svgrepo-com.svg" alt="Exit Fullscreen" />`,
+        play: `<img class="video__player--icon" src="${playIconUrl}" alt="Play" />`,
+        pause: `<img class="video__player--icon" src="${pauseIconUrl}" alt="Pause" />`,
+        mute: `<img class="video__player--icon video__player--icon-invert" src="${muteIconUrl}" alt="Mute" />`,
+        unmute: `<img class="video__player--icon video__player--icon-invert" src="${unmuteIconUrl}" alt="Unmute" />`,
+        fullscreen: `<img class="video__player--icon" src="${fullscreenIconUrl}" alt="Fullscreen" />`,
+        exitFullscreen: `<img class="video__player--icon video__player--icon-exit" src="${fullscreenIconUrl}" alt="Exit Fullscreen" />`,
     };
 
     const controls = document.createElement("div");
@@ -123,10 +129,16 @@ function initVideoPlayer(config) {
     const interactables = controls.querySelectorAll("button, input, select");
     interactables.forEach(el => el.disabled = true);
 
-    video.addEventListener("loadedmetadata", () => {
+    const handleMetadata = () => {
         durationEl.textContent = formatTime(video.duration);
         interactables.forEach(el => el.disabled = false);
-    });
+    };
+
+    if (video.readyState >= 1) {
+        handleMetadata();
+    } else {
+        video.addEventListener("loadedmetadata", handleMetadata);
+    }
 
     playPauseBtn.addEventListener("click", () => {
         if (video.paused) video.play();

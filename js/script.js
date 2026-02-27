@@ -1,3 +1,6 @@
+import initVideoPlayer from './videoPlayerAyush';
+import '../sass/main.scss';
+
 //was given like this in the doc shared
 document.addEventListener("DOMContentLoaded", () => {
     initVideoPlayer({
