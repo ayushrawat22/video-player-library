@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+}
+
+body {
+  background: #0f0f13;
+  /* Premium dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Ensures vertical centering */
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: white;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.video__player {
+  width: 100%;
+  max-width: 800px;
+  /* Slightly wider for a more cinematic feel */
+  background: #000;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  /* Deep elegant shadow */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.video__player--video {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  background: #000;
+  cursor: pointer;
+}
+.video__player--controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 40px 20px 15px 20px;
+  /* More top padding for the gradient */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
+  color: white;
+  z-index: 10;
+  pointer-events: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.video__player {
+  /* Show controls on hover or when video is paused (handled by JS class if needed) */
+}
+.video__player:hover .video__player--controls {
+  opacity: 1;
+}
+.video__player--right-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.video__player--center-controls {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 12px;
+  margin: 0 20px;
+}
+.video__player--button {
+  cursor: pointer;
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+.video__player--button:hover {
+  transform: scale(1.15);
+}
+.video__player--button svg {
+  width: 28px;
+  /* Larger, more accessible icons */
+  height: 28px;
+  fill: currentColor;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  /* Premium pop */
+}
+.video__player--speed {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.2s;
+  backdrop-filter: blur(4px);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.video__player--speed:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.video__player--speed option {
+  background: #222;
+  color: white;
+  font-weight: normal;
+}
+.video__player {
+  /* Premium Range Sliders */
+}
+.video__player--progress, .video__player--volume {
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition: height 0.1s ease, background 0.2s;
+}
+.video__player--progress::-webkit-slider-runnable-track, .video__player--volume::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+.video__player--progress::-webkit-slider-thumb, .video__player--volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.1s;
+}
+.video__player--progress:hover::-webkit-slider-thumb, .video__player--volume:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+.video__player--progress {
+  height: 6px;
+  flex: 1;
+}
+.video__player--progress::-webkit-slider-thumb {
+  margin-top: -4px;
+  /* Centers the 14px thumb on 6px track */
+}
+.video__player--volume {
+  height: 6px;
+  width: 80px;
+}
+.video__player--volume::-webkit-slider-thumb {
+  margin-top: -4px;
+}
+.video__player--time {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.video__player:fullscreen, .video__player:-webkit-full-screen {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+.video__player:fullscreen .video__player--video, .video__player:-webkit-full-screen .video__player--video {
+  border-radius: 0;
+  height: 100%;
+}
+.video__player:fullscreen .video__player--controls, .video__player:-webkit-full-screen .video__player--controls {
+  padding-bottom: 30px;
+  /* Extra padding for bottom screen edge */
+}
+
+/*# sourceMappingURL=style.css.map */

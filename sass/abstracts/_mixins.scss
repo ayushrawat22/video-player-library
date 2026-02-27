@@ -1,0 +1,34 @@
+@use './functions' as *;
+@use './variables' as *;
+@use './colors' as *;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: px_to_rem(40px);
+}
+
+@mixin slider-thumb($bg-color) {
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: $thumb-size;
+    height: $thumb-size;
+    border-radius: 50%;
+    background: $bg-color;
+    margin-top: $thumb-margin-top;
+  }
+}
+
+@mixin fullscreen {
+
+  &:fullscreen,
+  &:-webkit-full-screen {
+    @content;
+  }
+}

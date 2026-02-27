@@ -1,0 +1,185 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+}
+
+.page-body {
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.video__player {
+  width: 100%;
+  max-width: 700px;
+  background: black;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.video__player--video {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  background: black;
+  cursor: pointer;
+}
+.video__player--controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+  color: white;
+  z-index: 1000;
+  pointer-events: auto;
+}
+.video__player--right-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.video__player--center-controls {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 8px;
+  margin: 0 8px;
+}
+.video__player--button {
+  cursor: pointer;
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+.video__player--button:hover {
+  transform: scale(1.15);
+}
+.video__player--button .video__player--icon {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+.video__player--speed {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.2s;
+  backdrop-filter: blur(4px);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+}
+.video__player--speed:hover {
+  background: darkgray;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.video__player--speed-option {
+  background: black;
+  color: white;
+  font-weight: normal;
+}
+.video__player--progress, .video__player--volume {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition: height 0.1s ease, background 0.2s;
+}
+.video__player--progress::-webkit-slider-runnable-track, .video__player--volume::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+.video__player--progress::-webkit-slider-thumb, .video__player--volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  -webkit-transition: transform 0.1s;
+  transition: transform 0.1s;
+}
+.video__player--progress:hover::-webkit-slider-thumb, .video__player--volume:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+.video__player--progress {
+  height: 6px;
+  flex: 1;
+}
+.video__player--progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: gray;
+  margin-top: -3px;
+}
+.video__player--volume {
+  height: 6px;
+  width: 90px;
+}
+.video__player--volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: darkgray;
+  margin-top: -3px;
+}
+.video__player--time {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.video__player:fullscreen .video__player--controls, .video__player:-webkit-full-screen .video__player--controls {
+  padding-bottom: 30px;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10000;
+}/*# sourceMappingURL=main.css.map */
