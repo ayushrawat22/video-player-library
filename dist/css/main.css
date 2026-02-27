@@ -93,6 +93,10 @@ a:hover {
   height: 28px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
+.video__player--button .video__player--icon-exit {
+  transform: scale(0.9);
+  opacity: 0.8;
+}
 .video__player--speed {
   cursor: pointer;
   background: rgba(0, 0, 0, 0.6);
@@ -122,7 +126,7 @@ a:hover {
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
-  background: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(to right, white var(--value, 0%), rgba(255, 255, 255, 0.2) var(--value, 0%));
   border-radius: 4px;
   outline: none;
   cursor: pointer;

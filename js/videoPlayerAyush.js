@@ -31,12 +31,12 @@ function initVideoPlayer(config) {
     }
 
     const icons = {
-        play: `<svg class="video__player--icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M16.6582 9.28638C18.098 10.1862 18.8178 10.6361 19.0647 11.2122C19.2803 11.7152 19.2803 12.2847 19.0647 12.7878C18.8178 13.3638 18.098 13.8137 16.6582 14.7136L9.896 18.94C8.29805 19.9387 7.49907 20.4381 6.83973 20.385C6.26501 20.3388 5.73818 20.0469 5.3944 19.584C5 19.053 5 18.1108 5 16.2264V7.77357C5 5.88919 5 4.94701 5.3944 4.41598C5.73818 3.9531 6.26501 3.66111 6.83973 3.6149C7.49907 3.5619 8.29805 4.06126 9.896 5.05998L16.6582 9.28638Z"/></svg>`,
-        pause: `<svg class="video__player--icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5V19M16 5V19"/></svg>`,
-        mute: `<svg class="video__player--icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>`,
-        unmute: `<svg class="video__player--icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`,
-        fullscreen: `<svg class="video__player--icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.00002 3.99998H4.00004L4 9M20 8.99999V4L15 3.99997M15 20H20L20 15M4 15L4 20L9.00002 20"/></svg>`,
-        exitFullscreen: `<svg class="video__player--icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transform: scale(0.9); opacity: 0.8;"><path d="M9.00002 3.99998H4.00004L4 9M20 8.99999V4L15 3.99997M15 20H20L20 15M4 15L4 20L9.00002 20"/></svg>`,
+        play: `<img class="video__player--icon" src="./assets/icons/play-svgrepo-com.svg" alt="Play" />`,
+        pause: `<img class="video__player--icon" src="./assets/icons/pause-svgrepo-com.svg" alt="Pause" />`,
+        mute: `<img class="video__player--icon" src="./assets/icons/mute-volume-svgrepo-com.svg" alt="Mute" />`,
+        unmute: `<img class="video__player--icon" src="./assets/icons/unmute-svgrepo-com.svg" alt="Unmute" />`,
+        fullscreen: `<img class="video__player--icon" src="./assets/icons/fullscreen-svgrepo-com.svg" alt="Fullscreen" />`,
+        exitFullscreen: `<img class="video__player--icon video__player--icon-exit" src="./assets/icons/fullscreen-svgrepo-com.svg" alt="Exit Fullscreen" />`,
     };
 
     const controls = document.createElement("div");
@@ -98,11 +98,10 @@ function initVideoPlayer(config) {
     const speedSelect = controls.querySelector(".video__player--speed");
     const fullscreenBtn = controls.querySelector(".fullscreen");
 
-    // Dynamic track background coloring function for range sliders
     function updateRangeBackground(slider, isVolume = false) {
         if (!slider) return;
         const value = isVolume ? slider.value * 100 : slider.value;
-        slider.style.background = `linear-gradient(to right, white ${value}%, rgba(255,255,255,0.2) ${value}%)`;
+        slider.style.setProperty('--value', `${value}%`);
     }
 
     if (volumeSlider && defaults.volume != null) {

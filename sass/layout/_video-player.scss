@@ -78,6 +78,11 @@
             width: 28px;
             height: 28px;
             filter: drop-shadow(0 2px 4px $shadow-light);
+
+            &-exit {
+                transform: scale(0.9);
+                opacity: 0.8;
+            }
         }
     }
 
@@ -112,7 +117,7 @@
     &--volume {
         -webkit-appearance: none;
         appearance: none;
-        background: $color-bg-light;
+        background: linear-gradient(to right, $color-text var(--value, 0%), $color-bg-light var(--value, 0%));
         border-radius: $element-border-radius;
         outline: none;
         cursor: pointer;
